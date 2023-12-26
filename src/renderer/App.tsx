@@ -1,4 +1,4 @@
-import icon from "../../assets/icon.svg";
+import icon from "../../assets/logo-test.png";
 import "./App.css";
 
 function Hello() {

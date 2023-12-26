@@ -38,6 +38,7 @@ const configuration: webpack.Configuration = {
 
   module: {
     rules: [
+      // CSS 2 rule dùng để xác định css dùng cho các file có tiền tố .module sẽ áp dụng cho cục bộ. Còn lại sẽ toàn cục
       {
         test: /\.s?(a|c)ss$/,
         use: [
@@ -59,6 +60,7 @@ const configuration: webpack.Configuration = {
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
         exclude: /\.module\.s?(c|a)ss$/,
       },
+      //
       // Fonts
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
