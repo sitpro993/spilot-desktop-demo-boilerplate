@@ -1,6 +1,6 @@
-import ROUTE from '../constants/route';
-import LoginPage from '../pages/Login';
-import HomePage from '../pages/Home';
+import ROUTE from '@renderer/constants/route';
+import HomePage from '@renderer/pages/Home';
+import LoginPage from '@renderer/pages/Login';
 
 export const routes = [
   {

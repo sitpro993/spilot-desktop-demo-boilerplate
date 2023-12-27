@@ -1,10 +1,11 @@
 import React from 'react';
-import icon from '../../../../assets/icon.png';
-import { Button } from 'antd';
-import { useAppDispatch } from '../../redux';
-import { userLogout } from '../../redux/slices/authSlice';
 import { useNavigate } from 'react-router-dom';
-import ROUTE from '../../constants/route';
+import { Button } from 'antd';
+
+import icon from '@assets/icon.png';
+import ROUTE from '@renderer/constants/route';
+import { useAppDispatch } from '@renderer/redux';
+import { userLogout } from '@renderer/redux/slices/authSlice';
 
 function HomePage() {
   const dispatch = useAppDispatch();

@@ -1,0 +1,1 @@
+window._env_ = {"SKIP_PREFLIGHT_CHECK":"true","API_URL":"http://dev-api.spilot.io"}

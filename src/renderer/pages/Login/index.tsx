@@ -1,8 +1,9 @@
 import React from 'react';
-import { useAppDispatch } from '../../redux';
-import { userLogin } from '../../redux/slices/authSlice';
 import { useNavigate } from 'react-router-dom';
-import ROUTE from '../../constants/route';
+
+import ROUTE from '@renderer/constants/route';
+import { useAppDispatch } from '@renderer/redux';
+import { userLogin } from '@renderer/redux/slices/authSlice';
 
 function LoginPage() {
   const dispatch = useAppDispatch();

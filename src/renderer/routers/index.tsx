@@ -1,7 +1,9 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
+
+import PrivateRoute from '@renderer/components/SdRoute/PrivateRoute';
+import PublicRoute from '@renderer/components/SdRoute/PublicRoute';
+
 import { routes } from './config';
-import PrivateRoute from '../components/SdRoute/PrivateRoute';
-import PublicRoute from '../components/SdRoute/PublicRoute';
 
 function AppRouter() {
   return (

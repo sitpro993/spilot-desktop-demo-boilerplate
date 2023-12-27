@@ -6,10 +6,12 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import chalk from 'chalk';
 import { merge } from 'webpack-merge';
 import { execSync, spawn } from 'child_process';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import baseConfig from './webpack.config.base';
 import webpackPaths from './webpack.paths';
 import checkNodeEnv from '../scripts/check-node-env';
+import Dotenv from '../scripts/generateEnvConfig';
 
 // When an ESLint server is running, we can't set the NODE_ENV so we'll check if it's
 // at the dev webpack config is not accidentally run in a production environment
@@ -168,6 +170,21 @@ const configuration: webpack.Configuration = {
     }),
 
     new ReactRefreshWebpackPlugin(),
+
+    new Dotenv({
+      path: './.env', // Đường dẫn đến file .env của bạn
+      // Các cấu hình khác nếu cần
+    }) as any,
+
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(webpackPaths.rootPath, 'env-config.js'),
+          to: path.resolve(webpackPaths.distRendererPath, 'env-config.js'),
+          noErrorOnMissing: true,
+        },
+      ],
+    }),
 
     new HtmlWebpackPlugin({
       filename: path.join('index.html'),

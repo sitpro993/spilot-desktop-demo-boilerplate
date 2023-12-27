@@ -8,12 +8,14 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import { merge } from 'webpack-merge';
 import TerserPlugin from 'terser-webpack-plugin';
 import baseConfig from './webpack.config.base';
 import webpackPaths from './webpack.paths';
 import checkNodeEnv from '../scripts/check-node-env';
 import deleteSourceMaps from '../scripts/delete-source-maps';
+import Dotenv from '../scripts/generateEnvConfig';
 
 checkNodeEnv('production');
 deleteSourceMaps();
@@ -138,6 +140,21 @@ const configuration: webpack.Configuration = {
     new BundleAnalyzerPlugin({
       analyzerMode: process.env.ANALYZE === 'true' ? 'server' : 'disabled',
       analyzerPort: 8889,
+    }),
+
+    new Dotenv({
+      path: './.env', // Đường dẫn đến file .env của bạn
+      // Các cấu hình khác nếu cần
+    }) as any,
+
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(webpackPaths.rootPath, 'env-config.js'),
+          to: path.resolve(webpackPaths.distRendererPath, 'env-config.js'),
+          noErrorOnMissing: true,
+        },
+      ],
     }),
 
     new HtmlWebpackPlugin({
