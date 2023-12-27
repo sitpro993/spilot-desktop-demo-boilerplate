@@ -16,6 +16,7 @@ function LoginPage() {
           dispatch(userLogin());
           navigate(ROUTE.HOME);
         }}
+        className="text-3xl font-bold underline"
       >
         Login
       </button>

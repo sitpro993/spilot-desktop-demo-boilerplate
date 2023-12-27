@@ -1,5 +1,6 @@
 import React from 'react';
 import icon from '../../../../assets/icon.png';
+import { Button } from 'antd';
 import { useAppDispatch } from '../../redux';
 import { userLogout } from '../../redux/slices/authSlice';
 import { useNavigate } from 'react-router-dom';
@@ -22,8 +23,8 @@ function HomePage() {
           Read our docs
         </button>
 
-        <button
-          type="button"
+        <Button
+          type="primary"
           onClick={() => {
             dispatch(userLogout());
             navigate(ROUTE.LOGIN);
@@ -33,7 +34,7 @@ function HomePage() {
             🙏
           </span>
           Logout
-        </button>
+        </Button>
       </div>
     </div>
   );
