@@ -142,10 +142,7 @@ const configuration: webpack.Configuration = {
       analyzerPort: 8889,
     }),
 
-    new Dotenv({
-      path: './.env', // Đường dẫn đến file .env của bạn
-      // Các cấu hình khác nếu cần
-    }) as any,
+    new Dotenv() as any,
 
     new CopyWebpackPlugin({
       patterns: [
